@@ -26,6 +26,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/rileyskief/Desktop/CSCI 340/csci340lab9-/StanfordUniversity
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/rileyskief/Desktop/CSCI 340/csci340lab9-/StanfordUniversity/Pages/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWJvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/rileyskief/Desktop/CSCI 340/csci340lab9-/StanfordUniversity/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
