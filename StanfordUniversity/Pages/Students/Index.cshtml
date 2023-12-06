@@ -1,43 +1,58 @@
-public class IndexModel : PageModel
-{
-    private readonly SchoolContext _context;
-    public IndexModel(SchoolContext context)
-    {
-        _context = context;
-    }
+@page
+@model StanfordUniversity.Pages.Students.IndexModel
 
-    public string NameSort { get; set; }
-    public string DateSort { get; set; }
-    public string CurrentFilter { get; set; }
-    public string CurrentSort { get; set; }
-
-    public IList<Student> Students { get; set; }
-
-    public async Task OnGetAsync(string sortOrder)
-    {
-        // using System;
-        NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-        DateSort = sortOrder == "Date" ? "date_desc" : "Date";
-
-        IQueryable<Student> studentsIQ = from s in _context.Students
-                                        select s;
-
-        switch (sortOrder)
-        {
-            case "name_desc":
-                studentsIQ = studentsIQ.OrderByDescending(s => s.LastName);
-                break;
-            case "Date":
-                studentsIQ = studentsIQ.OrderBy(s => s.EnrollmentDate);
-                break;
-            case "date_desc":
-                studentsIQ = studentsIQ.OrderByDescending(s => s.EnrollmentDate);
-                break;
-            default:
-                studentsIQ = studentsIQ.OrderBy(s => s.LastName);
-                break;
-        }
-
-        Students = await studentsIQ.AsNoTracking().ToListAsync();
-    }
+@{
+    ViewData["Title"] = "Students";
 }
+
+<h2>Students</h2>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.Students[0].LastName)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students[0].FirstMidName)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.Students[0].EnrollmentDate)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.AgeSort">
+                    @Html.DisplayNameFor(model => model.Students[0].Age)
+                </a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Students)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstMidName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
