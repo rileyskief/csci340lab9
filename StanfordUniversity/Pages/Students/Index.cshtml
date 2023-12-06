@@ -73,7 +73,7 @@
         }
     </tbody>
 </table>
-@* 
+
 @{
     var prevDisabled = !Model.Students.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.Students.HasNextPage ? "disabled" : "";
@@ -92,4 +92,4 @@
    asp-route-currentFilter="@Model.CurrentFilter"
    class="btn btn-primary @nextDisabled">
     Next
-</a> *@
+</a>
