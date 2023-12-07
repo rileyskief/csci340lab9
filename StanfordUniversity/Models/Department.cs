@@ -23,6 +23,7 @@ namespace StanfordUniversity.Models
         public DateTime StartDate { get; set; }
 
         public int? InstructorID { get; set; }
+        public Guid ConcurrencyToken { get; set; } = Guid.NewGuid();
 
         public Instructor Administrator { get; set; }
         public ICollection<Course> Courses { get; set; }
