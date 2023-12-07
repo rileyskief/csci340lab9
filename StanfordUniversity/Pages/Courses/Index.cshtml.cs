@@ -21,8 +21,6 @@ namespace StanfordUniversity.Pages.Courses
 
         public IList<Course> Courses { get; set; }
 
-        public IList<Course> Course { get;set; } = default!;
-
         public async Task OnGetAsync()
         {
             Courses = await _context.Courses
