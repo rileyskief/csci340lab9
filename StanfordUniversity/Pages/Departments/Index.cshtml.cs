@@ -23,8 +23,11 @@ namespace StanfordUniversity.Pages.Departments
 
         public async Task OnGetAsync()
         {
-            Department = await _context.Departments
+            if (_context.Departments != null)
+            {
+                Department = await _context.Departments
                 .Include(d => d.Administrator).ToListAsync();
+            }
         }
     }
 }
