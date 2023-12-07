@@ -43,7 +43,7 @@ namespace StanfordUniversity.Data
             {
                 FirstMidName = "Gytis",
                 LastName = "Barzdukas",
-                EnrollmentDate = DateTime.Parse("2018-09-01")
+                EnrollmentDate = DateTime.Parse("2018-09-01"),
                 Age = 19
             };
 
